@@ -23,8 +23,7 @@ function normalizePort(val) {
 }
 
 app.get('/', function(req, res){
-  res.sendfile('public/index.html');
-  //res.sendfile('public/html/login.html');
+  res.sendfile('index.html');
 });
 
 app.use(express.static("public"));
