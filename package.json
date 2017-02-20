@@ -1,0 +1,27 @@
+{
+  "name": "whatsapp-web",
+  "version": "1.0.0",
+  "description": "Chat simulando whatsapp-web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./public/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FranSaavedra/whatsapp-web.git"
+  },
+  "author": "Fran Saavedra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FranSaavedra/whatsapp-web/issues"
+  },
+  "homepage": "https://github.com/FranSaavedra/whatsapp-web#readme",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "express": "^4.14.1",
+    "socket.io": "^1.7.3"
+  }
+}
