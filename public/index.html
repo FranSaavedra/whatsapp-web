@@ -8,11 +8,43 @@
     <script type="text/javascript" src="/js/main.js"></script>
     <link rel="stylesheet" href="/css/style.css">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   </head>
   <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-sm">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">WhatsApp Web</h4>
+          </div>
+          <div class="modal-body">
+            <label for="username">Introduce tu nombre de usuario</label>
+            <input type="text" id="username" size="35" autofocus>
+          </div>
+          <div class="modal-footer">
+            <button id="btn-modal" type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-3 col-md-3" id="users-zone">
+          <ul id="list-users"></ul>
+        </div>
+        <div class="col-xs-9 col-md-9" id="message-zone">
+          <ul id="list-messages"></ul>
+          <form action="">
+            <input id="message" autocomplete="off" /><button>Enviar</button>
+          </form>
+        </div>
+    </div>
+
   </body>
 </html>

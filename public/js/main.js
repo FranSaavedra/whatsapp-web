@@ -1,14 +1,49 @@
 $(document).ready(function(){
+  $('#myModal').modal({backdrop: 'static', keyboard: false});
   var socket = io();
   $('form').submit(function(){
-    socket.emit('chat message', $('#m').val());
-    $('#m').val('');
+    socket.emit('chat message', $('#message').val());
+    $('#message').val('');
     return false;
   });
   socket.on('chat message', function(msg){
-    $('#messages').append($('<li>').text(msg));
+    $('#list-messages').append($('<li>').text(msg));
+  });
+  socket.on('new user', function(msg){
+    $('#list-users').empty();
+    for (var key in msg) {
+      $('#list-users').append($('<li>').text(msg[key]));
+    }
+  });
+  socket.on('disconnect', function(msg){
+    $('#list-users').empty();
+    for (var key in msg) {
+      $('#list-users').append($('<li>').text(msg[key]));
+    }
   });
   socket.on('hi', function(msg){
-    console.log("holaaa");
+    console.log("Nuevo usuario conectado");
+  });
+  $('#btn-modal').click(function(){
+    if($('#username').val()){
+        console.log('nuevo nombre usuario');
+        socket.emit('new user', $('#username').val());
+        $('#username').val('');
+        return true;
+    }else{
+      return false;
+    }
+  });
+
+  $("#username").keyup(function(e){ 
+    if(e.keyCode==13){
+      e.preventDefault();
+      if($('#username').val()){
+        console.log('nuevo nombre usuario');
+        socket.emit('new user', $('#username').val());
+        $('#username').val('');
+        $('#myModal').modal("hide");
+      }
+    }
   });
 });
