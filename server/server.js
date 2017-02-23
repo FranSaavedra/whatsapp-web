@@ -32,24 +32,21 @@ http.listen(port, function(){
 });
 
 io.on('connection', function(socket){
-  console.log('a user connected: ' + socket.id);
-  socket.broadcast.emit('hi');
+  //socket.broadcast.emit('hi');
+  socket.on('new user', function(msg){
+    console.log('a user connected: ' + socket.id);
+    users[socket.id] = msg;
+    io.emit('new user', msg);
+    io.emit('list user', users);
+  });
+
   socket.on('disconnect', function(){
     console.log('user disconnected: ' + socket.id);
     delete users[socket.id];
     io.emit('disconnect', users);
   });
-  socket.on('chat message', function(msg){
-    console.log('message: ' + msg);
-  });
+  
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
   });
-  socket.on('new user', function(msg){
-    console.log('new user: ' + msg);
-    users[socket.id] = msg;
-    io.emit('new user', users);
-  });
 });
-
-io.emit('some event', { for: 'everyone' });

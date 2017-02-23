@@ -50,3 +50,18 @@ form button {
 	background: #FFF;
 	height: 650px;
 }
+
+ul{
+	list-style: none;
+}
+
+li{
+	padding:15px;
+	margin: 10px;
+	display: table;
+}
+
+#list-messages li{
+	background-color: #FFF;
+    border-radius: 30px;
+}

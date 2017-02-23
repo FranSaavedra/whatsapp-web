@@ -9,7 +9,11 @@ $(document).ready(function(){
   socket.on('chat message', function(msg){
     $('#list-messages').append($('<li>').text(msg));
   });
-  socket.on('new user', function(msg){
+   socket.on('new user', function(msg){
+    console.log("username" + msg);
+    $('#label-username').val(msg);
+  });
+  socket.on('list user', function(msg){
     $('#list-users').empty();
     for (var key in msg) {
       $('#list-users').append($('<li>').text(msg[key]));
@@ -21,12 +25,12 @@ $(document).ready(function(){
       $('#list-users').append($('<li>').text(msg[key]));
     }
   });
-  socket.on('hi', function(msg){
+  /*socket.on('hi', function(msg){
     console.log("Nuevo usuario conectado");
-  });
+  });*/
   $('#btn-modal').click(function(){
     if($('#username').val()){
-        console.log('nuevo nombre usuario');
+        //console.log('nuevo nombre usuario');
         socket.emit('new user', $('#username').val());
         $('#username').val('');
         return true;
@@ -39,7 +43,7 @@ $(document).ready(function(){
     if(e.keyCode==13){
       e.preventDefault();
       if($('#username').val()){
-        console.log('nuevo nombre usuario');
+        //console.log('nuevo nombre usuario');
         socket.emit('new user', $('#username').val());
         $('#username').val('');
         $('#myModal').modal("hide");

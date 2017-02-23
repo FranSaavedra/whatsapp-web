@@ -25,6 +25,8 @@
           <div class="modal-body">
             <label for="username">Introduce tu nombre de usuario</label>
             <input type="text" id="username" size="35" autofocus>
+            <label for="state">Introduce tu estado</label>
+            <input type="text" id="state" size="35">
           </div>
           <div class="modal-footer">
             <button id="btn-modal" type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
@@ -36,10 +38,20 @@
 
     <div class="row">
         <div class="col-xs-3 col-md-3" id="users-zone">
+          <div class="row">
+            <div class="col-xs-2 col-md-2">
+              <img src="/img/default-avatar.png" alt="User Image">
+            </div>
+            <div class="col-xs-10 col-md-10">
+              <label id="label-username">user</label>
+              <label id="label-state">state</label>
+            </div>
+
+          </div>
           <ul id="list-users"></ul>
         </div>
         <div class="col-xs-9 col-md-9" id="message-zone">
-          <ul id="list-messages"></ul>
+          <ul id="list-messages"><li>prueba mensaje</li></ul>
           <form action="">
             <input id="message" autocomplete="off" /><button>Enviar</button>
           </form>
