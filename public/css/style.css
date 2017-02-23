@@ -61,7 +61,12 @@ li{
 	display: table;
 }
 
-#list-messages li{
+#list-users li {
+	border: 1px solid;
+	display: block;
+}
+
+#list-messages li {
 	background-color: #FFF;
     border-radius: 30px;
 }

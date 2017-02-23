@@ -9,9 +9,15 @@ $(document).ready(function(){
   socket.on('chat message', function(msg){
     $('#list-messages').append($('<li>').text(msg));
   });
-   socket.on('new user', function(msg){
+  socket.on('new user', function(msg){
     console.log("username" + msg);
-    $('#label-username').val(msg);
+    //$('#label-username').val(msg);
+    $('#list-messages').append($('<li>').text(msg + " se ha unido a la conversación."));
+  });
+  socket.on('delete user', function(msg){
+    console.log("username" + msg);
+    //$('#label-username').val(msg);
+    $('#list-messages').append($('<li>').text(msg + " ha abandonado la conversación."));
   });
   socket.on('list user', function(msg){
     $('#list-users').empty();

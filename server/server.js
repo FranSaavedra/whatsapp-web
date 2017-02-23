@@ -32,16 +32,17 @@ http.listen(port, function(){
 });
 
 io.on('connection', function(socket){
-  //socket.broadcast.emit('hi');
   socket.on('new user', function(msg){
     console.log('a user connected: ' + socket.id);
     users[socket.id] = msg;
-    io.emit('new user', msg);
+    //io.emit('new user', msg);
     io.emit('list user', users);
+    socket.broadcast.emit('new user', msg);
   });
 
   socket.on('disconnect', function(){
     console.log('user disconnected: ' + socket.id);
+    socket.broadcast.emit('delete user', users[socket.id]);
     delete users[socket.id];
     io.emit('disconnect', users);
   });
