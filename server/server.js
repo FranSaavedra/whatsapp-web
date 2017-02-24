@@ -33,11 +33,12 @@ http.listen(port, function(){
 
 io.on('connection', function(socket){
   socket.on('new user', function(msg){
-    console.log('a user connected: ' + socket.id);
+    console.log('a user connected: ' + socket.id + msg);
     users[socket.id] = msg;
-    //io.emit('new user', msg);
+    socket.emit('user info',users[socket.id]);
+    //io.emit('new user',users[socket.id]);
     io.emit('list user', users);
-    socket.broadcast.emit('new user', msg);
+    socket.broadcast.emit('new user joined', msg);
   });
 
   socket.on('disconnect', function(){
@@ -48,6 +49,6 @@ io.on('connection', function(socket){
   });
   
   socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+    io.emit('chat message', msg, users[socket.id]);
   });
 });

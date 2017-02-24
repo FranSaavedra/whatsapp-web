@@ -6,18 +6,23 @@ $(document).ready(function(){
     $('#message').val('');
     return false;
   });
-  socket.on('chat message', function(msg){
-    $('#list-messages').append($('<li>').text(msg));
+  socket.on('chat message', function(msg, username){
+    $('#list-messages').append($('<li>').text(username + ": " + msg));
   });
-  socket.on('new user', function(msg){
-    console.log("username" + msg);
-    //$('#label-username').val(msg);
-    $('#list-messages').append($('<li>').text(msg + " se ha unido a la conversación."));
+  socket.on('user info', function(msg){
+    if (msg !== null) {
+      $('#label-username').text(msg);
+    }
+  });
+  socket.on('new user joined', function(msg){
+    if (msg !== null) {
+      $('#list-messages').append($('<li>').text(msg + " se ha unido a la conversación."));
+    }
   });
   socket.on('delete user', function(msg){
-    console.log("username" + msg);
-    //$('#label-username').val(msg);
-    $('#list-messages').append($('<li>').text(msg + " ha abandonado la conversación."));
+    if (msg !== null) {
+      $('#list-messages').append($('<li>').text(msg + " ha abandonado la conversación."));
+    }
   });
   socket.on('list user', function(msg){
     $('#list-users').empty();
