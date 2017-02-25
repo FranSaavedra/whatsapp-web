@@ -23,12 +23,12 @@ $(document).ready(function(){
   });
   socket.on('new user joined', function(username){
     if (username !== null) {
-      $('#list-messages').append($('<li>').text(username + " se ha unido a la conversación."));
+      $('#list-messages').append($('<li class="new-user-message">').text(username + " se ha unido a la conversación."));
     }
   });
   socket.on('delete user', function(user){
     if (user !== null) {
-      $('#list-messages').append($('<li>').text(user[0] + " ha abandonado la conversación."));
+      $('#list-messages').append($('<li class="delete-user-message">').text(user[0] + " ha abandonado la conversación."));
     }
   });
   socket.on('list user', function(users){

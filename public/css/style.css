@@ -82,3 +82,15 @@ li{
 	height: 570px;
     overflow: scroll;
 }
+
+#list-messages li.new-user-message {
+	margin-left: 350px;
+	background-color: #8BC34A;
+	color: #FFF;
+}
+
+#list-messages li.delete-user-message {
+	margin-left: 350px;
+	background-color: #D50000;
+	color: #FFF;
+}
