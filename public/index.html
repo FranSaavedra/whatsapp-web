@@ -27,6 +27,14 @@
             <input type="text" id="username" size="35" autofocus>
             <label for="state">Introduce tu estado</label>
             <input type="text" id="state" size="35">
+            <label>
+              <input type="radio" name="avatar" value="/img/avatar1.png" checked id="radio-default"/>
+              <img src="/img/avatar1.png">
+              <input type="radio" name="avatar" value="/img/avatar2.png" />
+              <img src="/img/avatar2.png">
+              <input type="radio" name="avatar" value="/img/avatar3.png" />
+              <img src="/img/avatar3.png">
+            </label>
           </div>
           <div class="modal-footer">
             <button id="btn-modal" type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
@@ -39,10 +47,10 @@
     <div class="row">
         <div class="col-xs-3 col-md-3" id="users-zone">
           <div class="row">
-            <div class="col-xs-2 col-md-2">
-              <img src="/img/default-avatar.png" alt="User Image">
+            <div class="col-xs-2 col-md-2 col-md-offset-1">
+              <img src="" alt="User Image" id="user-avatar" hidden>
             </div>
-            <div class="col-xs-10 col-md-10">
+            <div class="col-xs-9 col-md-9">
               <label id="label-username"></label>
               <label id="label-state"></label>
             </div>

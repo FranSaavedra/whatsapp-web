@@ -18,6 +18,7 @@ $(document).ready(function(){
     if (user !== null) {
       $('#label-username').text(user[0]);
       $('#label-state').text(user[1]);
+      $('#user-avatar').attr({src: user[2], hidden: false});
     }
   });
   socket.on('new user joined', function(username){
@@ -33,13 +34,17 @@ $(document).ready(function(){
   socket.on('list user', function(users){
     $('#list-users').empty();
     for (var key in users) {
-      $('#list-users').append($('<li>').text(users[key]));
+      $('#list-users').append($('<li>'));
+      $('#list-users li:last-child').append($('<img src="' + users[key][2] +'">'));
+      $('#list-users li:last-child').append($('<label>' + users[key][0] + ", " + users[key][1] + '</label>'));
     }
   });
   socket.on('disconnect', function(users){
     $('#list-users').empty();
     for (var key in users) {
-      $('#list-users').append($('<li>').text(users[key]));
+      $('#list-users').append($('<li>'));
+      $('#list-users li:last-child').append($('<img src="' + users[key][2] +'">'));
+      $('#list-users li:last-child').append($('<label>' + users[key][0] + ", " + users[key][1] + '</label>'));
     }
   });
   /*socket.on('hi', function(msg){
@@ -47,9 +52,10 @@ $(document).ready(function(){
   });*/
   $('#btn-modal').click(function(){
     if($('#username').val() && $('#state').val()){
-        socket.emit('new user', $('#username').val(), $('#state').val());
+        socket.emit('new user', $('#username').val(), $('#state').val(), $('input[name=avatar]:checked').val());
         $('#username').val("");
         $('#state').val("");
+        $('#radio-default').prop("checked", true);
     }else{
       return false;
     }
@@ -59,10 +65,11 @@ $(document).ready(function(){
     if(e.keyCode==13){
       e.preventDefault();
       if($('#username').val() && $('#state').val()){
-        socket.emit('new user', $('#username').val(), $('#state').val());
+        socket.emit('new user', $('#username').val(), $('#state').val(), $('input[name=avatar]:checked').val());
         $('#myModal').modal("hide");
         $('#username').val("");
         $('#state').val("");
+        $('#radio-default').prop("checked", true);
       }
     }
   });

@@ -32,9 +32,9 @@ http.listen(port, function(){
 });
 
 io.on('connection', function(socket){
-  socket.on('new user', function(username,state){
+  socket.on('new user', function(username,state,img){
     console.log('a user connected: ' + socket.id + username);
-    users[socket.id] = [username,state];
+    users[socket.id] = [username,state,img];
     socket.emit('user info',users[socket.id]);
     //io.emit('new user',users[socket.id]);
     io.emit('list user', users);
