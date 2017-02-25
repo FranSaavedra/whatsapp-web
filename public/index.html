@@ -1,7 +1,9 @@
 <!doctype html>
 <html>
   <head>
-    <title>Socket.IO chat</title>
+    <title>WhatsApp</title>
+
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
@@ -65,7 +67,8 @@
             <div id="message-container">
               <ul id="list-messages"></ul>
               <form action="">
-                <input id="message" autocomplete="off" placeholder="Escribe un mensaje aquí" /><button>Enviar</button>
+                <input id="message" autocomplete="off" placeholder="Escribe un mensaje aquí" />
+                <button id="send">Enviar</button><button type="button" id="reset">Vaciar chat</button>
               </form>
             </div>
             

@@ -36,7 +36,7 @@ $(document).ready(function(){
     for (var key in users) {
       $('#list-users').append($('<li>'));
       $('#list-users li:last-child').append($('<img src="' + users[key][2] +'">'));
-      $('#list-users li:last-child').append($('<label>' + users[key][0] + ", " + users[key][1] + '</label>'));
+      $('#list-users li:last-child').append($('<label>&nbsp;' + users[key][0] + ", " + users[key][1] + '</label>'));
     }
   });
   socket.on('disconnect', function(users){
@@ -44,7 +44,7 @@ $(document).ready(function(){
     for (var key in users) {
       $('#list-users').append($('<li>'));
       $('#list-users li:last-child').append($('<img src="' + users[key][2] +'">'));
-      $('#list-users li:last-child').append($('<label>' + users[key][0] + ", " + users[key][1] + '</label>'));
+      $('#list-users li:last-child').append($('<label>&nbsp;' + users[key][0] + ", " + users[key][1] + '</label>'));
     }
   });
   /*socket.on('hi', function(msg){
@@ -72,5 +72,9 @@ $(document).ready(function(){
         $('#radio-default').prop("checked", true);
       }
     }
+  });
+
+  $('#reset').click(function(){
+    $('#list-messages').empty();
   });
 });
