@@ -14,31 +14,32 @@ $(document).ready(function(){
       $('#list-messages').append($('<li>').text(username + ": " + msg + " (" + time.getHours() + ":" + time.getMinutes() + ")"));
     }
   });
-  socket.on('user info', function(msg){
-    if (msg !== null) {
-      $('#label-username').text(msg);
+  socket.on('user info', function(user){
+    if (user !== null) {
+      $('#label-username').text(user[0]);
+      $('#label-state').text(user[1]);
     }
   });
-  socket.on('new user joined', function(msg){
-    if (msg !== null) {
-      $('#list-messages').append($('<li>').text(msg + " se ha unido a la conversación."));
+  socket.on('new user joined', function(username){
+    if (username !== null) {
+      $('#list-messages').append($('<li>').text(username + " se ha unido a la conversación."));
     }
   });
-  socket.on('delete user', function(msg){
-    if (msg !== null) {
-      $('#list-messages').append($('<li>').text(msg[0] + " ha abandonado la conversación."));
+  socket.on('delete user', function(user){
+    if (user !== null) {
+      $('#list-messages').append($('<li>').text(user[0] + " ha abandonado la conversación."));
     }
   });
-  socket.on('list user', function(msg){
+  socket.on('list user', function(users){
     $('#list-users').empty();
-    for (var key in msg) {
-      $('#list-users').append($('<li>').text(msg[key]));
+    for (var key in users) {
+      $('#list-users').append($('<li>').text(users[key]));
     }
   });
-  socket.on('disconnect', function(msg){
+  socket.on('disconnect', function(users){
     $('#list-users').empty();
-    for (var key in msg) {
-      $('#list-users').append($('<li>').text(msg[key]));
+    for (var key in users) {
+      $('#list-users').append($('<li>').text(users[key]));
     }
   });
   /*socket.on('hi', function(msg){

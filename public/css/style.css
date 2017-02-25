@@ -10,7 +10,7 @@ body {
 }
 
 form { 
-	background: #000; 
+	background: #ECEFF1; 
 	padding: 3px;
 	position: fixed; 
 	bottom: 0;
@@ -48,7 +48,7 @@ form button {
 
 #users-zone {
 	background: #FFF;
-	height: 650px;
+	height: 620px;
 }
 
 ul{
@@ -76,4 +76,9 @@ li{
 #list-messages li.own-message {
 	float: right;
 	background-color: #B2FF59;
+}
+
+#message-container {
+	height: 570px;
+    overflow: scroll;
 }

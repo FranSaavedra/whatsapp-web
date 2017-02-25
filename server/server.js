@@ -32,13 +32,13 @@ http.listen(port, function(){
 });
 
 io.on('connection', function(socket){
-  socket.on('new user', function(msg){
-    console.log('a user connected: ' + socket.id + msg);
-    users[socket.id] = [msg,"estado"];
-    socket.emit('user info',users[socket.id][0]);
+  socket.on('new user', function(username,state){
+    console.log('a user connected: ' + socket.id + username);
+    users[socket.id] = [username,state];
+    socket.emit('user info',users[socket.id]);
     //io.emit('new user',users[socket.id]);
     io.emit('list user', users);
-    socket.broadcast.emit('new user joined', msg);
+    socket.broadcast.emit('new user joined', username);
   });
 
   socket.on('disconnect', function(){
