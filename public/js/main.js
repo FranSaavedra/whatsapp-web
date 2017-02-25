@@ -34,17 +34,21 @@ $(document).ready(function(){
   socket.on('list user', function(users){
     $('#list-users').empty();
     for (var key in users) {
-      $('#list-users').append($('<li>'));
-      $('#list-users li:last-child').append($('<img src="' + users[key][2] +'">'));
-      $('#list-users li:last-child').append($('<label>&nbsp;' + users[key][0] + ", " + users[key][1] + '</label>'));
+      if (key != socket.id) {
+        $('#list-users').append($('<li>'));
+        $('#list-users li:last-child').append($('<img src="' + users[key][2] +'">'));
+        $('#list-users li:last-child').append($('<label>&nbsp;' + users[key][0] + ", " + users[key][1] + '</label>'));
+      }
     }
   });
   socket.on('disconnect', function(users){
     $('#list-users').empty();
     for (var key in users) {
-      $('#list-users').append($('<li>'));
-      $('#list-users li:last-child').append($('<img src="' + users[key][2] +'">'));
-      $('#list-users li:last-child').append($('<label>&nbsp;' + users[key][0] + ", " + users[key][1] + '</label>'));
+      if (key != socket.id) {
+        $('#list-users').append($('<li>'));
+        $('#list-users li:last-child').append($('<img src="' + users[key][2] +'">'));
+        $('#list-users li:last-child').append($('<label>&nbsp;' + users[key][0] + ", " + users[key][1] + '</label>'));
+      }
     }
   });
   /*socket.on('hi', function(msg){
