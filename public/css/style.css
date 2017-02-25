@@ -69,4 +69,11 @@ li{
 #list-messages li {
 	background-color: #FFF;
     border-radius: 30px;
+    float: left;
+    clear: both;
+}
+
+#list-messages li.own-message {
+	float: right;
+	background-color: #B2FF59;
 }

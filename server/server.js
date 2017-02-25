@@ -34,8 +34,8 @@ http.listen(port, function(){
 io.on('connection', function(socket){
   socket.on('new user', function(msg){
     console.log('a user connected: ' + socket.id + msg);
-    users[socket.id] = msg;
-    socket.emit('user info',users[socket.id]);
+    users[socket.id] = [msg,"estado"];
+    socket.emit('user info',users[socket.id][0]);
     //io.emit('new user',users[socket.id]);
     io.emit('list user', users);
     socket.broadcast.emit('new user joined', msg);
@@ -49,6 +49,6 @@ io.on('connection', function(socket){
   });
   
   socket.on('chat message', function(msg){
-    io.emit('chat message', msg, users[socket.id]);
+    io.emit('chat message', msg, users[socket.id][0], socket.id);
   });
 });
