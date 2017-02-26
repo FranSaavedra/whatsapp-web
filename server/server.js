@@ -34,9 +34,20 @@ var users = {};
 io.on('connection', function(socket){
   socket.on('new user', function(username,state,img){
     console.log('a user connected: ' + socket.id + username);
+    var usernameAvailable = true;
+    for (var key in users){
+      if (users[key][0] == username) {
+        usernameAvailable = false;
+        break;
+      }
+    }
+    if (usernameAvailable) {
+      console.log('disponible');
+    }else{
+      console.log('ocupado');
+    }
     users[socket.id] = [username,state,img];
     socket.emit('user info',users[socket.id]);
-    //io.emit('new user',users[socket.id]);
     io.emit('list user', users);
     socket.broadcast.emit('new user joined', username);
   });
