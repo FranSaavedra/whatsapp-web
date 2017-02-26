@@ -23,13 +23,13 @@ function normalizePort(val) {
   return false;
 }
 
-var users = {};
-
 app.use(express.static(path.join(__dirname,"../public")));
 
 http.listen(port, function(){
   console.log('listening on *:3000');
 });
+
+var users = {};
 
 io.on('connection', function(socket){
   socket.on('new user', function(username,state,img){
@@ -50,5 +50,13 @@ io.on('connection', function(socket){
   
   socket.on('chat message', function(msg){
     io.emit('chat message', msg, users[socket.id][0], socket.id);
+  });
+
+  socket.on('writing', function(){
+    io.emit('writing', socket.id);
+  });
+
+  socket.on('end writing', function(){
+    io.emit('end writing', socket.id);
   });
 });
