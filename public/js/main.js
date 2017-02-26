@@ -17,7 +17,7 @@ $(document).ready(function(){
   socket.on('user info', function(user){
     if (user !== null) {
       $('#label-username').text(user[0]);
-      $('#label-state').text(user[1]);
+      $('#label-state').text("Estado: " + user[1]);
       $('#user-avatar').attr({src: user[2], hidden: false});
     }
   });
@@ -37,7 +37,8 @@ $(document).ready(function(){
       if (key != socket.id) {
         $('#list-users').append($('<li>'));
         $('#list-users li:last-child').append($('<img src="' + users[key][2] +'">'));
-        $('#list-users li:last-child').append($('<label>&nbsp;' + users[key][0] + ", " + users[key][1] + '</label>'));
+        $('#list-users li:last-child').append($('<label>&nbsp;' + users[key][0] + '</label><hr/>'));
+        $('#list-users li:last-child').append($('<p>Estado: ' + users[key][1] + '</p>'));
       }
     }
   });
@@ -47,7 +48,8 @@ $(document).ready(function(){
       if (key != socket.id) {
         $('#list-users').append($('<li>'));
         $('#list-users li:last-child').append($('<img src="' + users[key][2] +'">'));
-        $('#list-users li:last-child').append($('<label>&nbsp;' + users[key][0] + ", " + users[key][1] + '</label>'));
+        $('#list-users li:last-child').append($('<label>&nbsp;' + users[key][0] + '</label><hr/>'));
+        $('#list-users li:last-child').append($('<p>Estado: ' + users[key][1] + '</p>'));
       }
     }
   });
@@ -60,6 +62,7 @@ $(document).ready(function(){
         $('#username').val("");
         $('#state').val("");
         $('#radio-default').prop("checked", true);
+        $('#message').focus();
     }else{
       return false;
     }
@@ -74,6 +77,7 @@ $(document).ready(function(){
         $('#username').val("");
         $('#state').val("");
         $('#radio-default').prop("checked", true);
+        $('#message').focus();
       }
     }
   });

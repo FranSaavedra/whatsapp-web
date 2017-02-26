@@ -48,16 +48,19 @@
 
     <div class="row">
         <div class="col-xs-3 col-md-3" id="users-zone">
-          <div class="row">
-            <div class="col-xs-2 col-md-2 col-md-offset-1">
-              <img src="" alt="User Image" id="user-avatar" hidden>
-            </div>
-            <div class="col-xs-9 col-md-9">
-              <label id="label-username"></label>
-              <label id="label-state"></label>
+          <div class="row" id="info">
+            <div class="col-xs-12 col-md-12">
+              <div>
+                <img src="" alt="User Image" id="user-avatar" hidden>
+                <label id="label-username"></label>
+                <hr/>
+                <p id="label-state"></p>
+              </div>
             </div>
             <div class="col-xs-12 col-md-12">
-              <ul id="list-users"></ul>
+              <div id="user-container">
+                <ul id="list-users"></ul>
+              </div>
             </div>
           </div>
           
@@ -67,7 +70,7 @@
             <div id="message-container">
               <ul id="list-messages"></ul>
               <form action="">
-                <input id="message" autocomplete="off" placeholder="Escribe un mensaje aquí" />
+                <input id="message" autocomplete="off" placeholder="Escribe un mensaje aquí"/>
                 <button id="send">Enviar</button><button type="button" id="reset">Vaciar chat</button>
               </form>
             </div>
